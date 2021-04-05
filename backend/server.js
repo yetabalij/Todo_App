@@ -1,11 +1,15 @@
 const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
+const todoRoute = require("./routers/todo");
 
 //middlewares
 const app = express();
 app.use(cors());
 app.use(express.json());
+
+//routing middlewares
+app.use("/api", todoRoute);
 
 //db connection
 mongoose.connect("mongodb://localhost:27017/todoapp", {
